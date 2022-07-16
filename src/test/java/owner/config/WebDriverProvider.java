@@ -1,5 +1,6 @@
 package owner.config;
 
+import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -8,26 +9,22 @@ import org.openqa.selenium.opera.OperaDriver;
 import java.util.Objects;
 import java.util.function.Supplier;
 
-public class WedDriverProvider implements Supplier<WebDriver> {
+public class WebDriverProvider implements Supplier<WebDriver> {
 
-    private WebDriverConfig config = new WebDriverConfig();
+    private final WebDriverConfig config;
 
-    //the same below
-
-    //private final WebDriverConfig config;
-
-    //public WebDriverProvider() {
-    //    this.config = new WebDriverConfig();
-    //}
+    public WebDriverProvider() {
+        this.config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
+    }
 
     @Override
     public WebDriver get() {
         WebDriver driver = createWebDriver();
-        driver.get(config.getBaseURL());
+        driver.get(config.getBaseUrl());
         return driver;
     }
 
-    public WebDriver createWebDriver () {
+    private WebDriver createWebDriver() {
         if (Objects.nonNull(config.getBrowser())) {
             switch (config.getBrowser()) {
                 case CHROME: {
