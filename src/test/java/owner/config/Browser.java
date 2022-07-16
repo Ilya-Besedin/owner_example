@@ -1,9 +1,10 @@
 package owner.config;
 
-public enum Browsers {
+public enum Browser {
 
     CHROME,
-    FIREFOX,
-    OPERA
 
+    FIREFOX,
+
+    OPERA
 }

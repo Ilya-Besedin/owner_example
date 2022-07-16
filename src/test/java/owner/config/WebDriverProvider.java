@@ -11,6 +11,8 @@ import java.util.function.Supplier;
 
 public class WebDriverProvider implements Supplier<WebDriver> {
 
+    //private final LegacyWebDriverConfig config = new LegacyWebDriverConfig();
+
     private final WebDriverConfig config;
 
     public WebDriverProvider() {

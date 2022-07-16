@@ -6,15 +6,15 @@ import java.util.Objects;
 
 public class LegacyWebDriverConfig {
 
-    public Browsers getBrowser () {
+    public Browser getBrowser () {
         String browser = System.getProperty("browser");
         if (Objects.isNull(browser)) {
-            return Browsers.CHROME;
+            return Browser.CHROME;
         }
-        return Browsers.valueOf(browser);
+        return Browser.valueOf(browser);
     }
 
-    public String getBaseURL () {
+    public String getBaseUrl () {
         String baseUrl = System.getProperty("baseUrl");
         if (Objects.isNull(baseUrl)) {
             baseUrl = "https://bandcamp.com";
